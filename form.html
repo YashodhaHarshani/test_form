@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	
+
+	<style type="text/css">
+
+	.container{
+		width: 800px;
+		border-radius: 4px;
+		background-color: #fff;
+		overflow: hidden;
+
+	}
+
+	h2{
+		font-family: "Open Sans";
+		font-weight: bold;
+	}
+
+	label{
+		font-family: "Open Sans";
+		font-size: 14pt;
+		font-weight: bold;
+	}
+
+	*::placeholder {
+		/* modern browser */
+		font-family: "Open Sans";
+		font-size: 12pt;
+		font-weight: regular;
+	}
+
+	button{
+		font-family: "Open Sans";
+		font-size: 10pt;
+		font-weight: bold;
+	}
+
+	span{
+		font-family: "Open Sans";
+		font-size: 10pt;
+		color: red;
+	}
+
+	
+</style>
+
+</head>
+<body>
+	<div class="container">
+
+		<div id="error">
+			
+		</div>
+
+		<form name="myForm" id = "myForm" action="" onsubmit="return validation();" method="post">	
+			
+				<h2 align="center">Enter User Information</h2>
+
+				
+
+				<div class="row">
+
+					<div class="col-md-6">	
+						<label class="form-label">First Name</label>
+						<br>	
+						<input type="text" id="fname" class="form-control" name="first_name" placeholder="Type first name here">
+						<span class="error"><p id="fname_error"></p></span>
+						
+					</div>
+
+
+
+					<div class="col-md-6">
+						<label class="form-label">Email Address</label>
+						<br>
+						<input type="email"  id="email" class="form-control" name="email" placeholder="Type email address here">
+						<span class="error"><p id="email_error"></p></span>
+					</div>
+
+
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">	
+						<label class="form-label">Last Name</label>
+						<br>	
+						<input type="text" id="lname" class="form-control" name="last_name" placeholder="Type last name here">
+						<span class="error"><p id="lname_error"></p></span>
+					</div>
+
+					<div class="col-md-6">
+						<label class="form-label">User Type</label>
+						<br>
+						<input type="radio" id="user_type" name="user_type" value="School">
+						  <label for="school">School</label>
+						  <input type="radio" id="user_type" name="user_type" value="University">
+						  <label for="university">University</label>
+						  <input type="radio" id="user_type" name="user_type" value="Employee">
+						  <label for="employee">Employee</label>
+						<span class="error"><p id="user_type_error"></p></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<label class="form-label">Contact Number</label>
+						<br>		
+						<input type="text" id="contact" class="form-control" name="contact_no" placeholder="Type contact number here">
+						<span class="error"><p id="contact_no_error"></p></span>
+					</div>
+
+					<div class="col-md-6">
+						<label class="form-label">Payment Type</label>
+						<select name="payment_type" id="payment_type" class="form-select">
+							<option value="" disabled selected>Select Payment Type</option>
+							<option value="Full_Payment">Full Payment</option>
+							<option value="Half_Payment">Half Payment</option>
+						</select>
+						<span class="error"><p id="payment_type_error"></p></span>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<label class="form-label">Address</label>
+						<br>	
+						<textarea name="address" id="address" class="form-control"  placeholder="Type your address here"></textarea>
+						<span class="error"><p id="address_error"></p></span>
+					</div>
+
+				</div>
+				<br><br>
+
+				<div align="center">
+					<button type="submit" value="submit" class="btn btn-secondary" >SUBMIT</button>
+				</div>
+
+
+			</form>
+		</div>
+
+
+
+		<script type="text/javascript">
+		
+
+		document.getElementById("myForm").onsubmit = function () {
+			var a = document.forms["myForm"]["fname"].value;
+			var b = document.forms["myForm"]["email"].value;
+			var c = document.forms["myForm"]["lname"].value;
+			var d = document.forms["myForm"]["user_type"].value;
+			var e = document.forms["myForm"]["contact"].value;
+			var f = document.forms["myForm"]["payment_type"].value;
+			var g = document.forms["myForm"]["address"].value;
+
+			var submit = true;
+
+			
+
+			if (a == "") {
+				fnameError = "First Name field is required";
+				document.getElementById("fname_error").innerHTML = fnameError;
+				submit = false;
+			}
+
+			if (b == "") {
+				emailError = "Email field is required";
+				document.getElementById("email_error").innerHTML = emailError;
+				submit = false;
+			}
+
+			if (c == "") {
+				lnameError = "Last Name field is required";
+				document.getElementById("lname_error").innerHTML = lnameError;
+				submit = false;
+			}
+
+			if (d == "") {
+				usertypeError = "User Type is required";
+				document.getElementById("user_type_error").innerHTML = usertypeError;
+				submit = false;
+			}
+
+			if (e == "") {
+				contactnoError = "Contact Number field is required";
+				document.getElementById("contact_no_error").innerHTML = contactnoError;
+				submit = false;
+			}
+
+			if (f == "") {
+				paymenttypeError = "Payment Type is required";
+				document.getElementById("payment_type_error").innerHTML = paymenttypeError;
+				submit = false;
+			}
+
+			if (g == "") {
+				addressError = "Address field is required";
+				document.getElementById("address_error").innerHTML = addressError;
+				submit = false;
+			}
+
+			
+
+			if(a !== "" && b !== "" && c !== "" && d !== "" && e !== "" && f !=="" && g !== ""){
+
+					alert("User Added Successfully!");
+				
+
+			}
+
+
+
+			return submit;
+
+
+		}
+
+
+
+		
+
+		function removeWarning() {
+			document.getElementById(this.id + "_error").innerHTML = "";
+		}
+
+		document.getElementById("fname").onkeyup = removeWarning;
+		document.getElementById("email").onkeyup = removeWarning;
+		document.getElementById("lname").onkeyup = removeWarning;
+		document.getElementById("user_type").onkeyup = removeWarning;
+		document.getElementById("contact").onkeyup = removeWarning;
+		document.getElementById("payment_type").onkeyup = removeWarning;
+		document.getElementById("address").onkeyup = removeWarning;
+
+		
+	</script>
+
+
+
+
+
+</body>
+</html>
